@@ -1,0 +1,35 @@
+div > * {
+  display : block;
+  border:1px solid gray;
+}
+
+
+.wrap {
+  position:relative;
+}
+
+.wrap > div {
+  width:100px;
+  height:100px;
+  border:1px solid gray;
+  font-size:0.7em;
+  text-align:center;
+  line-height:100px;
+}
+
+.relative {
+  position:relative;
+  left:100px;
+  top:0px;
+}
+
+.absolute {
+  position:absolute;
+  left:100px;
+  top:10px;
+}
+
+.fixed {
+  position:fixed;
+  top:250px;
+}
