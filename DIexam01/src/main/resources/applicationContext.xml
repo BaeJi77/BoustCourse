@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="userBean" class="kr.or.connect.DIexam01.UserBean"></bean>
+	<bean id="e" class = "kr.or.connect.DIexam01.Engine"></bean>
+	<bean id="c" class = "kr.or.connect.DIexam01.Car">
+		<property name="Engine" ref = "e"></property>
+	</bean>
+</beans>
