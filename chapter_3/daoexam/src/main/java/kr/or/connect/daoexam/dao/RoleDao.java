@@ -2,7 +2,9 @@ package kr.or.connect.daoexam.dao;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
@@ -24,10 +26,20 @@ public class RoleDao {
 	
 	public RoleDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
-		
+		this.insertAction = new SimpleJdbcInsert(dataSource).withTableName("role");
 	}
 	
 	public List<Role> selectAll(){
 		return jdbc.query(SELECT_ALL, Collections.emptyMap() , rowMapper);
+	}
+	
+	public int insert(Role role) {
+		SqlParameterSource param = new BeanPropertySqlParameterSource(role);
+		return insertAction.execute(param);
+	}
+	
+	public int update(Role role) {
+		SqlParameterSource param = new BeanPropertySqlParameterSource(role);
+		return jdbc.update(UPDATE, param);
 	}
 }
